@@ -1,0 +1,45 @@
+{
+	"mode": "serial",
+	"port": "/dev/ttyUSB4",
+	"mappings":
+	[
+	{ "tsl": 8, "uid", "ATEM-1", "umd": "PC 1", "tallymap": [1] },
+	{ "tsl": 9, "uid", "ATEM-2", "umd": "PC 2", "tallymap": [1] },
+	{ "tsl": 10, "uid", "ATEM-5", "umd": "CAM 1", "tallymap": [1] },
+	{ "tsl": 11, "uid", "ATEM-6", "umd": "CAM 2", "tallymap": [1] },
+	{ "tsl": 3, "uid", "OBS-SOURCE-DECKLINK", "umd": "", "tallymap": [1] },
+	{ "tsl": 4, "uid", "OBS-SOURCE-DECKLINK", "umd": "", "tallymap": [2] },
+	{ "tsl": 0, "uid", "OBS-STREAMING", "umd": "", "tallymap": [1] }
+	]
+}
+
+//	TslTransmitter sched(&a);
+//	QSerialPort port("/dev/ttyUSB3", &a);
+//	port.setBaudRate(38400);
+//	port.setParity(QSerialPort::EvenParity);
+//	if (port.open(QIODevice::ReadWrite))
+//	{
+//		sched.setStreamDevice(&port, 256);
+//		qDebug()<<"Using serial port:"<<port.portName();
+//	}
+//	else
+//	{
+//		qDebug()<<"Cannot use serial port:"<<port.portName();
+//		qDebug()<<"Falling back to UDP"<<port.portName();
+//	}
+//	for(int i=0;i<125;++i)
+//		sched.setUmd(i,QString(" Cam %1").arg(i+1), 0);
+//	sched.setUmd(0, "MAZ 1 Ctl",0);
+//	sched.setUmd(1, "  MAZ 1  ",1);
+////	QString(" Cam %1").arg(i+1), 0);
+//	QObject::connect(&port, SIGNAL(error(QSerialPort::SerialPortError)),
+//	                 &sched, SLOT(onChannelError()));
+//	sched.setTslMode(true);
+
+//	simpleProtocol protprot;
+//	QObject::connect(UmdDB::inst(), SIGNAL(umdChanged(QString,int,UmdDB::umdInfo)),
+//	                 &protprot, SLOT(onUmdChanged(QString,int,UmdDB::umdInfo)));
+//	protprot.parseLine("UID obs-master");
+//	protprot.parseLine("TALLY 2 3 4");
+//	protprot.parseLine("UMD Upstream");
+//	protprot.parseLine("");
