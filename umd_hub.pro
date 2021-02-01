@@ -17,28 +17,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp \
-    simpleprotocol.cpp \
-    umddatabase.cpp \
-    umdmapper.cpp \
-    tsltransmitter.cpp \
-    protocollistener.cpp \
-    configfile.cpp \
-    unix_signal.cpp \
-    umdbusmgr.cpp
+		  src/main.cpp \
+	 src/simpleprotocol.cpp \
+	 src/umddatabase.cpp \
+	 src/umdmapper.cpp \
+	 src/tsltransmitter.cpp \
+	 src/protocollistener.cpp \
+	 src/configfile.cpp \
+	 src/unix_signal.cpp \
+	 src/umdbusmgr.cpp
 include($$PWD/../umd_tools/tslDump/tsl.pri)
 
 HEADERS += \
-    simpleprotocol.h \
-    umddatabase.h \
-    umdmapper.h \
-    tsltransmitter.h \
-    protocollistener.h \
-    configfile.h \
-    unix_signal.h \
-    umdbusmgr.h \
-    globals.h
-
-DISTFILES += \
-    tsl-1.json \
-    tsl_config.json
+	 src/simpleprotocol.h \
+	 src/umddatabase.h \
+	 src/umdmapper.h \
+	 src/tsltransmitter.h \
+	 src/protocollistener.h \
+	 src/configfile.h \
+	 src/unix_signal.h \
+	 src/umdbusmgr.h \
+	 src/globals.h
