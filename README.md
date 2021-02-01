@@ -4,6 +4,9 @@ Application to route UMD and tally data between systems.
 This application offers a simple text based protocol to allow connection to switchers
 or broadcast software and translates the status updates from/to other protocols.
 
+## Dependencies
+Currently you need to checkout umd_tools in the same workspace folder as this repo.
+Will add a submodule later. 
 
 ## Protocol support
 
