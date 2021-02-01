@@ -8,7 +8,7 @@ or broadcast software and translates the status updates from/to other protocols.
 ## Protocol support
 
 ### Currently supported output protocols:
- * TS over Serial (UDP and TCP soon to come)
+ * TSL over Serial (UDP and TCP soon to come)
 
 ### Currently supported input protocols:
 
