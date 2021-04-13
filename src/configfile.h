@@ -12,6 +12,7 @@ public:
 	static QByteArray dumpConfig();
 	bool loadAutosave(bool loadUmdDb = true, bool loadBusses=false);
 
+	void autoSave() const;
 private:
 	bool mAutoSave;
 	QString mFileName;

@@ -1,5 +1,6 @@
 #include "unix_signal.h"
 #include <unistd.h>
+//based on https://gist.github.com/azadkuh/a2ac6869661ebd3f8588
 
 void ignoreUnixSignals(std::initializer_list<int> ignoreSignals) {
 	// all these signals will be ignored.

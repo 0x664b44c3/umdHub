@@ -1,5 +1,5 @@
 #include "configfile.h"
-#include <umddatabase.h>
+#include "umddatabase.h"
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QJsonValue>
@@ -10,7 +10,7 @@
 #include <QFile>
 #include <QDir>
 #include "globals.h"
-#include <umdbusmgr.h>
+#include "umdbusmgr.h"
 
 ConfigFile::ConfigFile(QObject *parent) : QObject(parent), mAutoSave(false)
 {
@@ -19,25 +19,7 @@ ConfigFile::ConfigFile(QObject *parent) : QObject(parent), mAutoSave(false)
 
 ConfigFile::~ConfigFile()
 {
-	QString filePath = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation	);
-
-	QByteArray cfg = dumpConfig();
-	QDir dir;
-	dir.mkpath(filePath);
-	filePath+="/umd_hub.autosave";
-	QFile saveFile(filePath);
-	if (saveFile.open(QFile::WriteOnly|QFile::Truncate))
-	{
-		saveFile.write(cfg);
-		saveFile.close();
-		qDebug()<<"State saved to:" << filePath;
-	}
-	else
-	{
-		qDebug()<<"Cannot open/create save file:" << filePath;
-		qDebug()<<saveFile.errorString();
-		qDebug()<<cfg;
-	}
+	autoSave();
 }
 
 QByteArray ConfigFile::dumpConfig()
@@ -88,4 +70,30 @@ bool ConfigFile::loadAutosave(bool loadUmdDb, bool loadBusses)
 		}
 	}
 	return false;
+}
+
+void ConfigFile::autoSave() const
+{
+	QString filePath = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation	);
+	QByteArray cfg = dumpConfig();
+	QDir dir;
+	dir.mkpath(filePath);
+	filePath+="/umd_hub.autosave";
+	if (QFile::exists(filePath))
+	{
+		QFile::rename(filePath, filePath + ".1");
+	}
+	QFile saveFile(filePath);
+	if (saveFile.open(QFile::WriteOnly|QFile::Truncate))
+	{
+		saveFile.write(cfg);
+		saveFile.close();
+		qDebug()<<"State saved to:" << filePath;
+	}
+	else
+	{
+		qDebug()<<"Cannot open/create save file:" << filePath;
+		qDebug()<<saveFile.errorString();
+		qDebug()<<cfg;
+	}
 }

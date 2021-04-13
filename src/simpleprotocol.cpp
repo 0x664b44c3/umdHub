@@ -12,6 +12,7 @@ const QRegExp SPACE_REGEX("\\s+");
 
 bool dumpConfig(simpleProtocol* i, QString cmd, QString params)
 {
+	Q_UNUSED(params)
 	QByteArray cfgData = ConfigFile::dumpConfig();
 	QStringList lines = QString::fromUtf8(cfgData).split("\n");
 
